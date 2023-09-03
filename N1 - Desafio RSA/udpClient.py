@@ -2,8 +2,8 @@ from socket import *
 from random import *
 from rsa import RSA
 
-clientSocket = ("172.20.10.7", 12500)
-# clientSocket = socket(AF_INET, SOCK_DGRAM) # AF_INET6
+client_address = ("172.20.10.7", 12500)
+clientSocket = socket(AF_INET, SOCK_DGRAM) # AF_INET6
 rsa = RSA()
 print("UDP Client\n")
 
@@ -16,7 +16,7 @@ def main():
     encrypted_data = ','.join(map(str, encrypted_message)).encode('utf-8')
     print(plaintext)
    
-    client_socket.sendto(encrypted_data, client_address)
+    clientSocket.sendto(encrypted_data, client_address)
     clientSocket.close()
 
 # if __name__ == "__main__":
